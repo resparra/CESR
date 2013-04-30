@@ -38,7 +38,7 @@ $('#task').empty();
 
 $('#task').change(function(){
 
-//var temp = $('task').val();
+var temp = $('#task').val();
 
 $('#topic').empty();
 
@@ -46,36 +46,36 @@ $('#topic').empty();
    //text box
 //  else{
 
-     if($('task').val()=="6"){
+     if(temp=="6"){
          var choices = new Array("New", "Renewal");
      }
-     else if($('task').val()=="8"){
+     else if(temp=="8"){
          var choices = new Array("Application", "Amendment", "Renewal");
      }
-     else if($('task').val()=="9"){
+     else if(temp=="9"){
          var choices = new Array("Develop Data Base", "Data Entry", "Data Cleaning", "Data Analysis");
      }
-     else if($('task').val()=="10"){
+     else if(temp=="10"){
          var choices = new Array("Observation", "Focus Groups", "Interviews", "Surveys");
      }
-     else if($('task').val()=="11"){
+     else if(temp=="11"){
          var choices = new Array("Manuscripts", "White Papers", "Reports", "Presentations", "Press Releases", "MOU", "Memos", "Letters", "Calendar", "Work Plan", "Minutes", "Timesheets", "Other");
      }
-     else if($('task').val()=="13"){
+     else if(temp=="13"){
          var choices = new Array("Need Assesment", "Strategic Planning", "Logic Models", "EBP", "Prevention", "Cultural Competence", "Organizational Development", "Leadership", "Sustainability", "Data Management", "Data Collection", "Other");
      }
-     else if($('task').val()=="14"){
+     else if(temp=="14"){
          var choices = new Array("Coaching", "Observation", "Other");
      }
-     else if($('task').val()=="15"){
+     else if(temp=="15"){
          var choices = new Array("Evaluation Plans", "Logic Models", "Development/Revision of Instruments");
      }
-     else if($('task').val()=="16"){
+     else if(temp=="16"){
          var choices = new Array("Theoretical/Logic Models", "Curriculum Development", "Other");
     }
 
     //creating dropdown
-    for(var k=0; k<18; k++){
+    for(var k=0; k<choices.length; k++){
         $('#topic').append('<option value="' + choices[k] + '">' + choices[k] + '</option>');
         }
  // }
