@@ -3,11 +3,12 @@
 
 <?php
 
-username=; //figure out how to get these two variables
-passwd=;
+$username="jmedina"; //figure out how to get these two variables
+$passwd="jom901@gmail.com";
+$db="jmedinadb";
 
 //maybe not needed in AJAX????
-$con=mysqli_connect("localhost", username, passwd ,"jmedinadb");
+$con=mysqli_connect("localhost", $username, $passwd ,$db);
 
 if(mysqli_connect_errno($con))
   {
