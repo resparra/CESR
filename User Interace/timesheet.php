@@ -42,9 +42,14 @@ var temp = $('#task').val();
 
 $('#topic').empty();
 
-//  if(temp=="1" || temp=="2" || temp=="3" || temp=="4" || temp=="5" || temp=="7" || temp=="12" || temp=="17" || temp=="18" || temp=="19"){
-   //text box
-//  else{
+    if(temp=="1" || temp=="2" || temp=="3" || temp=="4" || temp=="5" || temp=="7" || temp=="12" || temp=="17" || temp=="18" || temp=="19"){
+        $('#topic').hide();
+        $('#other').show();
+    }
+    else{
+
+     $('#other').hide();
+     $('#topic').show();
 
      if(temp=="6"){
          var choices = new Array("New", "Renewal");
@@ -78,7 +83,7 @@ $('#topic').empty();
     for(var k=0; k<choices.length; k++){
         $('#topic').append('<option value="' + choices[k] + '">' + choices[k] + '</option>');
         }
- // }
+    }
     });
 
 });
@@ -113,6 +118,11 @@ Task:
 <select id="task" form="project">
 </select>
 
+Topic/Detail:
+<select id="topic" form="project">
+</select>
+
+<input type="text" id="other" form="project"/>
 
 <br><br>
 
@@ -134,9 +144,6 @@ Hours:
 <option value=".75">.75</option><br><br>
 </select>
 
-Topic/Detail:
-<select id="topic" form="project">
-</select>
 
 Audience:
 <select name="Audience" form="project">
