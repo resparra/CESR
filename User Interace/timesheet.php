@@ -38,18 +38,15 @@ $('#task').empty();
 
 $('#task').change(function(){
 
+$('#other').empty();
 var temp = $('#task').val();
 
-$('#topic').empty();
-
     if(temp=="1" || temp=="2" || temp=="3" || temp=="4" || temp=="5" || temp=="7" || temp=="12" || temp=="17" || temp=="18" || temp=="19"){
-        $('#topic').hide();
-        $('#other').show();
-    }
-    else{
+  
+     $('#other').append('Topic: <input type="text" id="topic" name="topic" form="project"/>');
+     }
 
-     $('#other').hide();
-     $('#topic').show();
+    else{
 
      if(temp=="6"){
          var choices = new Array("New", "Renewal");
@@ -79,7 +76,10 @@ $('#topic').empty();
          var choices = new Array("Theoretical/Logic Models", "Curriculum Development", "Other");
     }
 
+     //  $('#other').append('Topic: <select id="topic" form="project"><option value="1">1</option><option value="2">2</option></select>');
+    
     //creating dropdown
+    $('#other').append('Topic: <select id="topic" name="topic" form="project"></select>');
     for(var k=0; k<choices.length; k++){
         $('#topic').append('<option value="' + choices[k] + '">' + choices[k] + '</option>');
         }
@@ -89,24 +89,23 @@ $('#topic').empty();
 });
 </script>
 
-
 </head>
-<body>
 <div id="banner">
 <h1>CESR <font size="5" color="white">Center for Evaluation and Sociomedical Reaserch</font></h1>
 </div>
 <div id="container">
-<form method="Post" action="insert_data.php" id="carform">
+<form method="POST" action="print_data.php" id="tsform" onSubmit="alert('Data is being inserted');">
 
+<div id="first">
 Project:
-<select name="project" form="project">
+<select id="project" name="project" form="project">
 <option value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
 </select>
 
 Phase:
-<select name="phase" form="project">
+<select id="phase" name="phase" form="project">
 <option value="1">1: Contracting Process</option>
 <option value="2">2: Program Management Design </option>
 <option value="3">3: Implementation</option>
@@ -115,19 +114,14 @@ Phase:
 </select>
 
 Task:
-<select id="task" form="project">
+<select id="task" name="task" form="project">
 </select>
+</div>
 
-Topic/Detail:
-<select id="topic" form="project">
-</select>
-
-<input type="text" id="other" form="project"/>
-
-<br><br>
-
+<br/><br/>
+<div id="second">
 Hours:
-<select name ="Hours" form ="project">
+<select name="hours" form="project">
 <option value="0">0</option>
 <option value="1">1</option>
 <option value="2">2</option>
@@ -135,18 +129,17 @@ Hours:
 <option value="4">4</option>
 <option value="5">5</option>
 <option value="6">6</option>
-<option value="7">7</option><br><br>
+<option value="7">7</option><br/><br/>
 </select>
-<select name = "Fractions" form="project">
+<select name="fractions" form="project">
 <option value=".00">.00</option>
 <option value=".25">.25</option>
 <option value=".50">.50</option>
-<option value=".75">.75</option><br><br>
+<option value=".75">.75</option><br/><br/>
 </select>
 
-
 Audience:
-<select name="Audience" form="project">
+<select name="audience" form="project">
 <option value="NA">N/A</option>
 <option value="Client">Client</option>
 <option value="Stakeholder">Stakeholder</option>
@@ -156,7 +149,7 @@ Audience:
 </select>
 
 Modality:
-<select name="Modality" form="project">
+<select name="modality" form="project">
 <option value="NA">N/A</option>
 <option value="F2F">Face to Face</option>
 <option value="Phone">Phone</option>
@@ -164,6 +157,13 @@ Modality:
 <option value="Web Base">Web Base</option>
 <option value="Other">Other</option>
 </select>
+</div>
+<br/><br/>
+
+<div id="other">
+</div>
+
+<br/><br/>
 
 <input type="submit" value="Submit">
 </form>
@@ -171,5 +171,5 @@ Modality:
 </div>
 <div id="footer">
 </div>
-</body>
 </HTML>
+
