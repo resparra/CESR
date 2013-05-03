@@ -113,7 +113,7 @@ $con=mysqli_connect($host, $username, $passwd , $db);
 //while($row=mysqli_fetch_array($result))
 //  echo '<option value="'.$row[0].'">'.$row[1].'</option>';
 
-$result=mysqli_query($con, "SELECT p_id, p_name from Project WHERE p_id IN (SELECT p_id from WorkerPro WHERE w_id = '$_SESSION[id]'");
+$result=mysqli_query($con, "SELECT p_id, p_name from Project WHERE p_id IN (SELECT p_id from WorkerPro WHERE w_id = '$_SESSION[id]')");
 while($row=mysqli_fetch_array($result))
   echo '<option value"'.$row[0].'">'.$row[1].'</option>';
 
