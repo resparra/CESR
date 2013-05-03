@@ -32,7 +32,7 @@ $('#task').empty();
     //creating dropdown
     for(var k=0; k<18; k++){
         if(PT[k]==1)
-            $('#task').append('<option value="' + (k+1) + '">' + tasks[k] + '</option>');
+            $('#task').append('<option value="' + (k+1) + '">' + (k+1) + ": "  + tasks[k] + '</option>');
         }
      });
 
@@ -43,7 +43,7 @@ var temp = $('#task').val();
 
     if(temp=="1" || temp=="2" || temp=="3" || temp=="4" || temp=="5" || temp=="7" || temp=="12" || temp=="17" || temp=="18" || temp=="19"){
   
-     $('#other').append('Topic: <input type="text" id="topic" name="topic" form="project"/>');
+     $('#other').append('Topic: <input type="text" id="topic" name="topic" form="tsform"/>');
      }
 
     else{
@@ -79,7 +79,7 @@ var temp = $('#task').val();
      //  $('#other').append('Topic: <select id="topic" form="project"><option value="1">1</option><option value="2">2</option></select>');
     
     //creating dropdown
-    $('#other').append('Topic: <select id="topic" name="topic" form="project"></select>');
+    $('#other').append('Topic: <select id="topic" name="topic" form="tsform"></select>');
     for(var k=0; k<choices.length; k++){
         $('#topic').append('<option value="' + choices[k] + '">' + choices[k] + '</option>');
         }
@@ -94,18 +94,34 @@ var temp = $('#task').val();
 <h1>CESR <font size="5" color="white">Center for Evaluation and Sociomedical Reaserch</font></h1>
 </div>
 <div id="container">
-<form method="POST" action="print_data.php" id="tsform" onSubmit="alert('Data is being inserted');">
+<form method="POST" action="insert_data.php" id="tsform" onSubmit="alert('Data is being inserted');">
 
 <div id="first">
+
 Project:
-<select id="project" name="project" form="project">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
+<select id="project" name="project" form="tsform">
+<?php
+
+$username="jmedina";
+$passwd="jom901@gmail.com";
+$db = "jmedinadb";
+$host="localhost"; //change this!!!!
+
+$con=mysqli_connect($host, $username, $passwd , $db);
+
+//$result=mysqli_query($con, "SELECT * from Project");
+//while($row=mysqli_fetch_array($result))
+//  echo '<option value="'.$row[0].'">'.$row[1].'</option>';
+
+$result=mysqli_query($con, "SELECT p_id, p_name from Project WHERE p_id IN (SELECT p_id from WorkerPro WHERE w_id = '$_SESSION[id]'");
+while($row=mysqli_fetch_array($result))
+  echo '<option value"'.$row[0].'">'.$row[1].'</option>';
+
+?>
 </select>
 
 Phase:
-<select id="phase" name="phase" form="project">
+<select id="phase" name="phase" form="tsform">
 <option value="1">1: Contracting Process</option>
 <option value="2">2: Program Management Design </option>
 <option value="3">3: Implementation</option>
@@ -114,14 +130,14 @@ Phase:
 </select>
 
 Task:
-<select id="task" name="task" form="project">
+<select id="task" name="task" form="tsform">
 </select>
 </div>
 
 <br/><br/>
 <div id="second">
 Hours:
-<select name="hours" form="project">
+<select name="hours" form="tsform">
 <option value="0">0</option>
 <option value="1">1</option>
 <option value="2">2</option>
@@ -131,7 +147,7 @@ Hours:
 <option value="6">6</option>
 <option value="7">7</option><br/><br/>
 </select>
-<select name="fractions" form="project">
+<select name="fractions" form="tsform">
 <option value=".00">.00</option>
 <option value=".25">.25</option>
 <option value=".50">.50</option>
@@ -139,7 +155,7 @@ Hours:
 </select>
 
 Audience:
-<select name="audience" form="project">
+<select name="audience" form="tsform">
 <option value="NA">N/A</option>
 <option value="Client">Client</option>
 <option value="Stakeholder">Stakeholder</option>
@@ -149,7 +165,7 @@ Audience:
 </select>
 
 Modality:
-<select name="modality" form="project">
+<select name="modality" form="tsform">
 <option value="NA">N/A</option>
 <option value="F2F">Face to Face</option>
 <option value="Phone">Phone</option>
@@ -172,4 +188,3 @@ Modality:
 <div id="footer">
 </div>
 </HTML>
-
