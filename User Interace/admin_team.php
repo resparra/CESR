@@ -44,14 +44,14 @@ Phase:
 
 Task:
 <select id="task" name="task" form="tsform">
-<option value="1">Check emails</option>
-<option value="2">Coordination of Meetings</option>
-<option value="3">Coordination of Activities</option>
-<option value="4">Publication Committee</option>
-<option value="5">Marketing Committee</option>
-<option value="6">Professional Development Committee</option>
-<option value="7">Team Meetings</option>
-<option value="8">Supervision</option>
+<option value="M1">Check emails</option>
+<option value="M2">Coordination of Meetings</option>
+<option value="M3">Coordination of Activities</option>
+<option value="M4">Publication Committee</option>
+<option value="M5">Marketing Committee</option>
+<option value="M6">Professional Development Committee</option>
+<option value="M7">Team Meetings</option>
+<option value="M8">Supervision</option>
 </select>
 </div>
 
