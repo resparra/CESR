@@ -19,12 +19,11 @@ else{
 echo "<br/><br/>";
 
 
-$id=$_POST['id'];
 $pr=$_POST['proyecto'];
 $start=$_POST['anho'].'-'.$_POST['mes'].'-'.'01';
 $end=$_POST['anho'].'-'.$_POST['mes'].'-'.'31';
 
-$info_query = "SELECT * FROM WorkerPro WHERE w_id='$id' AND p_id='$pr' AND date>='$start' AND date<='$end' ";
+$info_query = "SELECT * FROM WorkerPro WHERE w_id='$_SESSION[id]' AND p_id='$pr' AND date>='$start' AND date<='$end' ";
 
 $result = mysqli_query($con, $info_query);
 ?>
