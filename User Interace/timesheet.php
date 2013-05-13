@@ -191,13 +191,6 @@ Modality:
 <div id="container2">
 <form method="POST" action="worker_view.php" id="vform" onSubmit="alert('Data is being inserted');">
 
-ID:
-<select name="id" form="vform">
-<option value="101">101</option>
-<option value="328">328</option>
-<option value="500">500</option>
-</select>
-
 Project:
 <select  name="proyecto" form="vform">
 <?php
