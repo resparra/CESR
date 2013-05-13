@@ -187,6 +187,59 @@ Modality:
 </form>
 
 </div>
+
+<div id="container2">
+<form method="POST" action="worker_view.php" id="vform" onSubmit="alert('Data is being inserted');">
+
+ID:
+<select name="id" form="vform">
+<option value="101">101</option>
+<option value="328">328</option>
+<option value="500">500</option>
+</select>
+
+Project:
+<select  name="proyecto" form="vform">
+<?php
+
+
+$host="localhost";
+$username="jmedina";
+$passwd="jom901@gmail.com";
+$db="jmedinadb";
+
+$con=mysqli_connect($host, $username, $passwd , $db);
+
+//check if SESSION[id] functions
+$result=mysqli_query($con, "SELECT p_id, p_name from Project WHERE p_id IN (SELECT p_id from WorkerPro WHERE w_id = '$_SESSION[id]')");
+while($row=mysqli_fetch_array($result))
+  echo '<option value="'.$row[0].'">'.$row[1].'</option>';
+
+mysqli_close($con);
+?>
+</select>
+
+Choose Year and Month:
+<select name="anho" form="vform">
+<?php
+$years=array("2011", "2012", "2013");
+foreach($years as $value)
+    echo '<option value="'.$value.'">'.$value.'</option>';
+?>
+</select>
+<select name="mes" form="vform">
+<?php
+$months=array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+for($i=0; $i<12; $i++)
+    echo '<option value="'.($i+1).'">'.$months[$i].'</option>';
+?>
+</select>
+<input type="submit" value="Submit">
+</form>
+
+</div>
+
+
 <div id="footer">
 </div>
 </HTML>
